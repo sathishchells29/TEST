@@ -1,21 +1,77 @@
 body {
-    display: flex;
-    justify-content: center;
+    display:flex;
     align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+    justify-content: center;
+    min-height:100vh;
+    margin: 0;
+    background-color: lightcoral;
 }
 
-.heartbeat img {
-    width: 200px; /* Adjust size as needed */
-    animation: pump 1s infinite;
+.heart {
+    background: red;
+    position: relative;
+    height: 100px;
+    width:100px;
+    /* Animation */
+    transform: rotate(-45deg) scale(1);
+    animation: pulse 2s linear infinite;
 }
 
-@keyframes pump {
-    0%, 100% {
-        transform: scale(1);
+
+.heart::after {
+    /* background:blue; */
+    background:inherit;
+    border-radius: 50%; /* To make circle */
+    content:'';
+    position:absolute;
+    /* top: -100px;*/
+    top: -50%; /* Inherit properties of parent */
+    /* left: -100px; */
+    left:0;
+    height: 100px;
+    width:100px;
+}
+.heart::before {
+  /*  background:green; */
+    background:inherit; 
+    border-radius: 50%; /* To make circle */
+    content:'';
+    position:absolute;
+    top:0; 
+    right:-50%; /* Inherit properties of parent */
+    height: 100px;
+    width:100px;
+}
+
+@keyframes pulse{
+    0% {
+        transform: rotate(-45deg) scale(1);
+        opacity: 0;
+    }/*
+    10% {
+        transform: rotate(-45deg) scale(1.3);
     }
+    20% {
+        transform: rotate(-45deg) scale(0.9);
+    }
+    30% {
+        transform: rotate(-45deg) scale(1.2);
+    }
+    40% {
+        transform: rotate(-45deg) scale(0.9);
+    }*/
     50% {
-        transform: scale(1.2); /* Adjust scale for pump effect */
+        transform: rotate(-45deg) scale(1.3);
+        opacity: 1;
+    }/*
+    60% {
+        transform: rotate(-45deg) scale(0.95);
+    }
+    70% {
+        transform: rotate(-45deg) scale(1);
+    } */
+    100% {
+        transform: rotate(-45deg) scale(1);
+        opacity: 1;
     }
 }
